@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>SnookerBillys</title>
+	</head>
+	<body ng-app="snookerbillys">
+		<h1>Ranking</h1>
+		<div ng-controller="mainCtrl">
+			<form>
+				<label for="weeks">Week</label>
+				<select name="weeks" ng-init="ranking.week_id = 15" ng-model="ranking.week_id" ng-options="ranking.week_id as ranking.week_id for ranking in json | unique:'week_id'">
+					<!-- <option ng-value="ranking.week_id" ng-repeat="ranking in json | unique:'week_id'">Week {{ranking.week_id}}</option> -->
+				</select>
+			</form>
+			<table>
+				<tr>
+					<td>Rank</td>
+					<td>Team</td>
+					<td>Played Matches</td>
+					<td>Won Matches</td>
+					<td>Draw Matches</td>
+					<td>Lost Matches</td>
+					<td>Lost Frames</td>
+					<td>Won Frames</td>
+				</tr>
+				<tr ng-repeat="ranking in json | filter:ranking:true | orderBy:predicate:reverse" ng-style="ranking.team.team_name === 'Arena SC 09' ? { 'background-color':'#93c47d', color:'#FFF' } : { }">
+					<td>{{ranking.ranking_rank}}</td>
+					<td>{{ranking.team.team_name}}</td>
+					<td>{{ranking.ranking_playedMatches}}</td>
+					<td>{{ranking.ranking_wonMatches}}</td>
+					<td>{{ranking.ranking_drawMatches}}</td>
+					<td>{{ranking.ranking_lostMatches}}</td>
+					<td>{{ranking.ranking_lostFrames}}</td>
+					<td>{{ranking.ranking_wonFrames}}</td>
+				</tr>
+			</table>
+		</div>
+		<script src="../assets/js/libraries/angular//angular.js" type="text/javascript"></script>
+		<script src="../assets/js/angular.js" type="text/javascript"></script>
+	</body>
+</html>
