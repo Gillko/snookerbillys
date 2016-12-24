@@ -125,7 +125,11 @@ class RankingController extends Controller
 	{
 		$ranking = Ranking::findOrFail($ranking_id);
 
-        return view('rankings.edit', compact('ranking'));
+		$week = Week::all()->pluck('week_name', 'week_id');
+		$season = Season::all()->pluck('season_years', 'season_id');
+		$team = Team::all()->pluck('team_name', 'team_id');
+
+        return view('rankings.edit', compact('ranking', 'week', 'season', 'team'));
 	}
 
 	/**

@@ -10,12 +10,12 @@
 			<div class="row">
 				<div class="large-12">
 					{{ Form::model($ranking, ['method' => 'PUT', 'action' => ['RankingController@update', $ranking->ranking_id]]) }}
-						{{-- {{ Form::label('weeks', 'Week')}}
-						{{ Form::select('week_id', $weeks, null) }}
-						{{ Form::label('seasons', 'Season')}}
-						{{ Form::select('season_id', $seasons, null) }}
-						{{ Form::label('teams', 'Team')}}
-						{{ Form::select('team_id', $teams, null) }} --}}
+						{{ Form::label('Week') }}
+						{{ Form::select('week_id', $week, null) }}
+						{{ Form::label('Season') }}
+						{{ Form::select('season_id', $season, null) }}
+						{{ Form::label('Team') }}
+						{{ Form::select('team_id', $team, null) }}
 						{{ Form::label('ranking_rank', 'Rank')}}
 						{{ Form::text('ranking_rank') }}
 						{{ Form::label('ranking_playedMatches', 'Played Matches')}}
