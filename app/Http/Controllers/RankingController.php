@@ -155,8 +155,8 @@ class RankingController extends Controller
 	 */
 	public function destroy($ranking_id)
 	{
-		$rankings = Season::find($ranking_id);
-        $rankings->delete();
+		$ranking = Ranking::find($ranking_id);
+        $ranking->delete();
 
         /*Redirect*/
         Session::flash('message', 'Successfully deleted the ranking!');
