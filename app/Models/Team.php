@@ -38,4 +38,14 @@ class Team extends Model
     {
     	return $this->hasMany('App\Models\Player', 'player_id', 'player_id');
     }
+
+    /**
+    *Get the weeks associated with the given team.
+    *
+    *@return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
+    public function weeks()
+    {
+        return $this->belongsToMany('App\Models\Week', 'teams_weeks');
+    }
 }

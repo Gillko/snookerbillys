@@ -32,4 +32,9 @@ class Player extends Model
     {
         return $this->belongsTo('App\Models\Team', 'team_id', 'team_id');
     }
+
+    public function matches()
+    {
+        return $this->belongsToMany('App\Models\Match', 'players_matches');
+    }
 }

@@ -16,6 +16,7 @@ class Season extends Model
 	public $timestamps = false;
 
     protected $fillable = [
+        'season_id',
         'season_years',
         'season_start',
         'season_end'
@@ -27,5 +28,10 @@ class Season extends Model
     {
         //return $this->hasMany('App\Models\Week', 'week_id', 'week_id');
         return $this->hasMany('App\Models\Week', 'season_id', 'week_id');
+    }
+
+    public function matches()
+    {
+        return $this->hasMany('App\Models\Match', 'season_id', 'match_id');
     }
 }

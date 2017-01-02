@@ -16,6 +16,7 @@ class Address extends Model
 	public $timestamps = false;
 
 	protected $fillable = [
+		'address_id',
 		'addres_country',
 		'address_city',
 		'address_postalcode',
