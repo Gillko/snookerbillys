@@ -72,5 +72,14 @@ Route::get('/ranking/{ranking_id}', 'RankingController@show');
 Route::get('/rankings', 'RankingController@index');
 Route::get('/ranking/{ranking_id}/edit', 'RankingController@edit');
 Route::delete('/ranking/{ranking_id}', 'RankingController@destroy');*/
+
+
+Route::resource('matches', 'MatchController');
+
+Route::resource('frames', 'FrameController');
+
 Route::get('/rankings_json', 'RankingController@json');
+Route::get('/weeks_json', 'WeekController@json');
+Route::get('/matches_json', 'MatchController@json');
+Route::get('/frames_json', 'FrameController@json');
 /* =========== END ROUTES FOR RANKING ===========  */
