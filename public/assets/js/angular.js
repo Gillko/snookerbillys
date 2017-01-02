@@ -4,9 +4,24 @@ angular.module("snookerbillys", [])
 	
 	$http.get('http://localhost:8888/public/rankings_json')
 		.then(function(res){
-			$scope.json = res.data;
+			$scope.rankings = res.data;
 			$scope.predicate = 'ranking_rank';
 		});
+	$http.get('http://localhost:8888/public/weeks_json')
+		.then(function(res){
+			$scope.weeks = res.data;
+			//$scope.predicate = 'week_name';
+		});
+	$http.get('http://localhost:8888/public/matches_json')
+		.then(function(res){
+			$scope.matches = res.data;
+			//$scope.predicate = 'match_scorePlayerHome';
+		});
+	/*$http.get('http://localhost:8888/public/frames_json')
+		.then(function(res){
+			$scope.frames = res.data;
+			//$scope.predicate = 'match_scorePlayerHome';
+		});*/
 	})
 .filter('unique', function () {
    return function(collection, keyname) {
@@ -23,5 +38,5 @@ angular.module("snookerbillys", [])
 		  }
 	  });
 	  return output;
-	};     
+	};   
 });

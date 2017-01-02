@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>SnookerBillys</title>
+		<link rel="stylesheet" type="text/css" href="assets/css/snookerbillys.css">
+	</head>
+	<body ng-app="snookerbillys">
+		<div ng-controller="mainCtrl">
+			<h1>Kalender</h1>
+			<table>
+				<tr>
+					<!-- <td>Week</td> -->
+					<td>Start</td>
+					<td>Day</td>
+					<td>Date</td>
+					<td>Home Team</td>
+					<td>Away Team</td>
+					<td>Score Home Team</td>
+					<td>Score Away Team</td>
+				</tr>
+				<tr ng-repeat="week in weeks">
+					<!-- <td>{{week.week_name}}</td> -->
+					<td ng-class="{'arena': week.week_scoreTeamHome > '0' || week.week_scoreTeamAway > '0'}">{{week.week_start | date:'dd/MM/yyyy'}}</td>
+					<td>{{week.week_day}}</td>
+					<td>{{week.week_date | date:'dd/MM/yyyy'}}</td>
+					<td ng-repeat="team in week.teams | orderBy:'team_name'" ng-if="week.location_id == 2" ng-class="{'arena': team.team_name === 'Arena SC 09'}">
+						{{team.team_name}}
+					</td>
+					<td ng-repeat="team in week.teams | orderBy:'team_name':'desc'" ng-if="week.location_id == 1" ng-class="{'arena': team.team_name === 'Arena SC 09'}">
+						{{team.team_name}}
+					</td>
+					<td>{{week.week_scoreTeamHome}}</td>
+					<td>{{week.week_scoreTeamAway}}</td>
+				</tr>
+			</table>
+			<h1>Ranking</h1>
+			<form>
+				<label for="weeks">Week</label>
+				<select name="weeks" ng-init="week.week_id = 15" ng-model="week.week_id" ng-options="ranking.week_id as ranking.week_id for ranking in rankings | unique:'week_id'">
+					<!-- <option ng-value="ranking.week_id" ng-repeat="ranking in rankings | unique:'week_id'">Week {{ranking.week_id}}</option> -->
+				</select>
+			</form>
+			<table>
+				<tr>
+					<td>Rank</td>
+					<td>Team</td>
+					<td>Played Matches</td>
+					<td>Won Matches</td>
+					<td>Draw Matches</td>
+					<td>Lost Matches</td>
+					<td>Lost Frames</td>
+					<td>Won Frames</td>
+				</tr>
+				<tr ng-repeat="ranking in rankings | filter:week:true | orderBy:predicate:reverse" ng-class="{'arena': ranking.team.team_name === 'Arena SC 09'}">
+					<td>{{ranking.ranking_rank}}</td>
+					<td>{{ranking.team.team_name}}</td>
+					<td>{{ranking.ranking_playedMatches}}</td>
+					<td>{{ranking.ranking_wonMatches}}</td>
+					<td>{{ranking.ranking_drawMatches}}</td>
+					<td>{{ranking.ranking_lostMatches}}</td>
+					<td>{{ranking.ranking_lostFrames}}</td>
+					<td>{{ranking.ranking_wonFrames}}</td>
+				</tr>
+			</table>
+			<h1>Speeldagen</h1>
+			<table>
+				<tr>
+					<!-- <td>Week</td> -->
+					<td>Home Team</td>
+					<td>Away Team</td>
+					<td>Score Home Team</td>
+					<td>Score Away Team</td>
+				</tr>
+				<tr ng-repeat="week in weeks | filter:week:true" ng-if="week.location_id == 2">
+					<!-- <td>{{week.week_name}}</td> -->
+					<td ng-repeat="team in week.teams | orderBy:'team_name'" ng-class="{'arena': team.team_name === 'Arena SC 09'}">
+						{{team.team_name}}
+					</td>
+					<td>{{week.week_scoreTeamHome}}</td>
+					<td>{{week.week_scoreTeamAway}}</td>
+				</tr>
+				<tr ng-repeat="week in weeks | filter:week:true" ng-if="week.location_id == '1'">
+					<!-- <td>{{week.week_name}}</td> -->
+					<td ng-repeat="team in week.teams | orderBy:'team_name':'desc'" ng-class="{'arena': team.team_name === 'Arena SC 09'}">
+						{{team.team_name}}
+					</td>
+					<td>{{week.week_scoreTeamHome}}</td>
+					<td>{{week.week_scoreTeamAway}}</td>
+				</tr>
+			</table>
+			<h1>Matchen</h1>
+			<table>
+				<tr>
+					<td>Players</td>
+					<td>Score Home Player</td>
+					<td>Score Away Player</td>
+					<td>Frames</td>
+				</tr>
+				<tr ng-repeat="match in matches | filter:week:true" ng-if="match.location_id == 1">
+					<td ng-repeat="player in match.players | orderBy:'player_firsname':'desc'" ng-class="{'arena': player.player_firstname === 'Gilles' && player.player_surname === 'Vanpeteghem' || player.player_firstname === 'Olivier' && player.player_surname === 'Mortier' || player.player_firstname === 'Mathias' && player.player_surname === 'Taerwe'}">
+						{{player.player_firstname}} {{player.player_surname}}
+					</td>
+					<td>{{match.match_scorePlayerHome}}</td>
+					<td class="arena">{{match.match_scorePlayerAway}}</td>
+					<td ng-repeat="frame in match.frames">
+						<table>
+							<tr>
+								<td>{{frame.frame_name}}</td>
+							</tr>
+							<tr>
+								<td>{{frame.frame_scorePlayerHome}}</td>
+								<td>{{frame.frame_breakPlayerHome}}</td>
+								<td class="arena">{{frame.frame_scorePlayerAway}}</td>
+								<td>{{frame.frame_breakPlayerAway}}</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr ng-repeat="match in matches | filter:week:true" ng-if="match.location_id == 2">
+					<td ng-repeat="player in match.players | orderBy:'player_firsname'" ng-class="{'arena': player.player_firstname === 'Gilles' && player.player_surname === 'Vanpeteghem' || player.player_firstname === 'Olivier' && player.player_surname === 'Mortier' || player.player_firstname === 'Mathias' && player.player_surname === 'Taerwe'}">
+						{{player.player_firstname}} {{player.player_surname}}
+					</td>
+					<td class="arena">{{match.match_scorePlayerHome}}</td>
+					<td>{{match.match_scorePlayerAway}}</td>
+					<td ng-repeat="frame in match.frames">
+						<table>
+							<tr>
+								<td>{{frame.frame_name}}</td>
+							</tr>
+							<tr>
+								<td class="arena">{{frame.frame_scorePlayerHome}}</td>
+								<td>{{frame.frame_breakPlayerHome}}</td>
+								<td>{{frame.frame_scorePlayerAway}}</td>
+								<td>{{frame.frame_breakPlayerAway}}</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script src="assets/js/libraries/angular/angular.js" type="text/javascript"></script>
+		<script src="assets/js/angular.js" type="text/javascript"></script>
+	</body>
+</html>
