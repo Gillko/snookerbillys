@@ -22,7 +22,7 @@ class PlayerController extends Controller
     public function index()
     {
         /*Get the players*/
-        $players = Player::with('team')->orderBy('player_firstname')->get();
+        $players = Player::with('team')->orderBy('player_surname')->get();
 
         /*Load the view and pass the player*/
         return \View::make('players.index')->with('players', $players);
@@ -55,11 +55,7 @@ class PlayerController extends Controller
         /*Validation*/
         $rules = array(
             'player_firstname'              => 'required',
-            'player_surname'                => 'required',
-            'player_nickname'               => 'required',
-            'player_highestBreakTraining'   => 'required',
-            'player_highestBreakOfficial'   => 'required',
-            'player_cue'                    => 'required',
+            'player_surname'                => 'required'
         );
 
         /*Run the validation rules on the inputs from the form*/
