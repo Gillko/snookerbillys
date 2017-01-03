@@ -14,10 +14,14 @@
 						{{ Form::text('match_scorePlayerHome') }}
 						{{ Form::label('match_scorePlayerAway', 'Score Player Away')}}
 						{{ Form::text('match_scorePlayerAway') }}
+						{{ Form::label('seasons', 'Season')}}
+						{{ Form::select('season_id', $seasons, null) }}
+						{{ Form::label('locations', 'Location')}}
+						{{ Form::select('location_id', $locations, null) }}
+						{{ Form::label('weeks', 'Week')}}
+						{{ Form::select('week_id', $weeks, null) }}
 						{{ Form::label('player_list', 'Players')}}
 						{{ Form::select('player_list[]', $players, null, ['multiple']) }}
-						{{ Form::label('week_list', 'Weeks')}}
-						{{ Form::select('week_list[]', $weeks, null, ['multiple']) }}
 
 						{{ Form::submit('Create the Match!', array('class' => 'button expanded')) }}
 					{{ Form::close() }}

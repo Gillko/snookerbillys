@@ -114,9 +114,9 @@ class MatchController extends Controller
     {
         $match = Match::findOrFail($match_id);
 
-        $players   = Player::all()->pluck('player_surname', 'player_id');
-        $seasons = Season::all()->pluck('season_years', 'season_id');
-        $weeks   = Week::all()->pluck('week_name', 'week_id');
+        $players    = Player::all()->pluck('player_surname', 'player_id');
+        $seasons    = Season::all()->pluck('season_years', 'season_id');
+        $weeks      = Week::all()->pluck('week_name', 'week_id');
         $locations  = Location::all()->pluck('location_name', 'location_id');
 
         return view('matches.edit', compact('match', 'weeks', 'seasons', 'players', 'locations'));
