@@ -37,7 +37,7 @@
 			<h1>Ranking</h1>
 			<form>
 				<label for="weeks">Week</label>
-				<select name="weeks" ng-init="week.week_id = 11" ng-model="week.week_id" ng-options="ranking.week_id as ranking.week_id for ranking in rankings | unique:'week_id'">
+				<select name="weeks" ng-init="week.week_id = 13" ng-model="week.week_id" ng-options="ranking.week_id as ranking.week_id for ranking in rankings | unique:'week_id'">
 					<!-- <option ng-value="ranking.week_id" ng-repeat="ranking in rankings | unique:'week_id'">Week {{ranking.week_id}}</option> -->
 				</select>
 			</form>
@@ -110,9 +110,9 @@
 							</tr>
 							<tr>
 								<td>{{frame.frame_scorePlayerHome}}</td>
-								<!-- <td>{{frame.frame_breakPlayerHome}}</td> -->
+								<td>{{frame.frame_breakPlayerHome}}</td>
 								<td class="arena">{{frame.frame_scorePlayerAway}}</td>
-								<!-- <td>{{frame.frame_breakPlayerAway}}</td> -->
+								<td>{{frame.frame_breakPlayerAway}}</td>
 							</tr>
 						</table>
 					</td>
@@ -130,9 +130,9 @@
 							</tr>
 							<tr>
 								<td class="arena">{{frame.frame_scorePlayerHome}}</td>
-								<!-- <td>{{frame.frame_breakPlayerHome}}</td> -->
+								<td>{{frame.frame_breakPlayerHome}}</td>
 								<td>{{frame.frame_scorePlayerAway}}</td>
-								<!-- <td>{{frame.frame_breakPlayerAway}}</td> -->
+								<td>{{frame.frame_breakPlayerAway}}</td>
 							</tr>
 						</table>
 					</td>
