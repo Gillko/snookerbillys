@@ -18,7 +18,7 @@
 					<p>{{ $frame->frame_breakPlayerAway }}</p>
 					
 					<a href="{{ URL::to('/frames/' . $frame->frame_id . '/edit') }}">{{ Form::button('Edit', array('class' => 'button succes'))}}</a>
-					{{ Form::open(array('url' => 'categories/' . $frame->frame_id, 'class' => '')) }}
+					{{ Form::open(array('url' => 'frames/' . $frame->frame_id, 'class' => '')) }}
 					{{ Form::hidden('_method', 'DELETE') }}
 					{{ Form::button('Delete', array('type' => 'submit', 'class' => 'button alert'))}}
 					{{ Form::close() }}

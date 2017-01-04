@@ -21,7 +21,7 @@
 						@endforeach
 					@endunless
 					<a href="{{ URL::to('/matches/' . $match->match_id . '/edit') }}">{{ Form::button('Edit', array('class' => 'button succes'))}}</a>
-					{{ Form::open(array('url' => 'categories/' . $match->match_id, 'class' => '')) }}
+					{{ Form::open(array('url' => 'matches/' . $match->match_id, 'class' => '')) }}
 					{{ Form::hidden('_method', 'DELETE') }}
 					{{ Form::button('Delete', array('type' => 'submit', 'class' => 'button alert'))}}
 					{{ Form::close() }}
