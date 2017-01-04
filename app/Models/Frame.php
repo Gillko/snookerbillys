@@ -28,7 +28,7 @@ class Frame extends Model
 
     public function matches()
     {
-        return $this->belongsToMany('App\Models\Match', 'matches_frames', 'frame_id', 'match_id');
+        return $this->belongsToMany('App\Models\Match', 'matches_frames', 'match_id', 'frame_id');
     }
 
     /**
