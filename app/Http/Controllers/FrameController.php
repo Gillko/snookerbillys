@@ -54,7 +54,7 @@ class FrameController extends Controller
 
         /*Validation*/
         $rules = array(
-            'frame_name' => 'required',
+            'frame_name'            => 'required',
             'frame_scorePlayerHome' => 'required',
             'frame_scorePlayerAway' => 'required',
         );
