@@ -10,6 +10,7 @@ use Input;
 use Validator;
 use Session;
 use Redirect;
+use DB;
 
 class TeamController extends Controller
 {
@@ -36,7 +37,7 @@ class TeamController extends Controller
     {
         $teams = Team::all();
 
-        $addresses = Address::all()->pluck('address_street', 'address_id');
+        $addresses = Address::all(DB::raw('concat (address_street," ",address_number," ",address_city) as address_address, address_id'))->pluck('address_address', 'address_id');
 
         return \View::make('teams.create', compact('teams', 'addresses'));
     }
