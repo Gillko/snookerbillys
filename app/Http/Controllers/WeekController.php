@@ -37,11 +37,11 @@ class WeekController extends Controller
      */
     public function create()
     {
-        $weeks = Week::all();
+        $weeks      = Week::all();
 
-        $teams = Team::all()->pluck('team_name', 'team_id');
-        $seasons = Season::all()->pluck('season_years', 'season_id');
-        $locations = Location::all()->pluck('location_name', 'location_id');
+        $teams      = Team::all()->pluck('team_name', 'team_id');
+        $seasons    = Season::all()->pluck('season_years', 'season_id');
+        $locations  = Location::all()->pluck('location_name', 'location_id');
 
         return \View::make('weeks.create', compact('seasons', 'teams', 'locations'));
     }
