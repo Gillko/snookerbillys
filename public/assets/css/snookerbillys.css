@@ -2,3 +2,7 @@
 	background-color: #93c47d;
 	color: #ffffff; 
 }
+
+select#players{
+	height: 700px;
+}
