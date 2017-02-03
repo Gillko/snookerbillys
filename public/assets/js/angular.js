@@ -23,20 +23,20 @@ angular.module("snookerbillys", [])
 			//$scope.predicate = 'match_scorePlayerHome';
 		});*/
 	})
-.filter('unique', function () {
-   return function(collection, keyname) {
-	  var output = [], 
-		  keys = [];
+.filter('unique', function(){
+	return function(collection, keyname){
+		var output = [], 
+			keys = [];
 
-	  angular.forEach(collection, function(item) {
+		angular.forEach(collection, function(item){
 
-		  var key = item[keyname];
-		  if(keys.indexOf(key) === -1) {
-			  keys.push(key);
+			var key = item[keyname];
+			if(keys.indexOf(key) === -1){
+				keys.push(key);
 
-			  output.push(item);
-		  }
-	  });
-	  return output;
-	};   
+				output.push(item);
+			}
+		});
+		return output;
+	};
 });
