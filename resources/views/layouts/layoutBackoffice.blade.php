@@ -17,6 +17,7 @@
 		<link rel="icon" href="" type="image/x-icon">
 		<link href="{{ url('assets/css/libraries/bootstrap/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
 		<link href="{{ url('assets/css/app.css') }}" rel="stylesheet" type="text/css">
+		<link href="{{ url('assets/css/snookerbillys.css') }}" rel="stylesheet" type="text/css">
 		@yield('head')
 	</head>
 	<body>
