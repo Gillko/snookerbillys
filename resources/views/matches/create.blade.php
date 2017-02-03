@@ -1,15 +1,15 @@
 @extends('layouts.layoutBackoffice')
 @section('head')
-<script src="../assets/js/libraries/jquery/jquery-3.1.1.min.js"></script>
-<script>
-	$(document).ready(function(){
-		$(".addFrame").click(function(){
-			$(".addFields").append(
-				'<div class="form-group"><label for="frame_name">Name</label><input name="frame_name[]" type="text" id="frame_name" class="form-control"></div><div class="form-group"><label for="frame_scorePlayerHome">Score Player Home</label><input name="frame_scorePlayerHome[]" type="text" id="frame_scorePlayerHome" class="form-control"></div><div class="form-group"><label for="frame_breakPlayerHome">Break Player Home</label><input name="frame_breakPlayerHome[]" type="text" id="frame_breakPlayerHome" class="form-control"></div><div class="form-group"><label for="frame_scorePlayerAway">Score Player Away</label><input name="frame_scorePlayerAway[]" type="text" id="frame_scorePlayerAway" class="form-control"></div><div class="form-group"><label for="frame_breakPlayerAway">Break Player Away</label><input name="frame_breakPlayerAway[]" type="text" id="frame_breakPlayerAway" class="form-control"></div>'
-			);
+	<script src="../assets/js/libraries/jquery/jquery-3.1.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".addFrame").click(function(){
+				$(".addFields").append(
+					'<div class="form-group"><label for="frame_name">Frame Name</label><input name="frame_name[]" type="text" id="frame_name" class="form-control"></div><div class="form-group"><label for="frame_scorePlayerHome">Score Player Home</label><input name="frame_scorePlayerHome[]" type="text" id="frame_scorePlayerHome" class="form-control"></div><div class="form-group"><label for="frame_breakPlayerHome">Break Player Home</label><input name="frame_breakPlayerHome[]" type="text" id="frame_breakPlayerHome" class="form-control"></div><div class="form-group"><label for="frame_scorePlayerAway">Score Player Away</label><input name="frame_scorePlayerAway[]" type="text" id="frame_scorePlayerAway" class="form-control"></div><div class="form-group"><label for="frame_breakPlayerAway">Break Player Away</label><input name="frame_breakPlayerAway[]" type="text" id="frame_breakPlayerAway" class="form-control"></div>'
+				);
+			});
 		});
-	});
-</script>
+	</script>
 @endsection
 @section('content')
 	<h1>Create a match</h1>
@@ -29,7 +29,7 @@
 	</div>
 	<div class="form-group">
 		{{ Form::label('player_list', 'Players')}}
-		{{ Form::select('player_list[]', $players, null, ['multiple', 'class' => 'form-control']) }}
+		{{ Form::select('player_list[]', $players, null, ['multiple', 'class' => 'form-control', 'id' => 'players']) }}
 	</div>
 	<div class="form-group">
 		{{ Form::label('match_scorePlayerHome', 'Score Player Home')}}
@@ -41,7 +41,7 @@
 	</div>
 
 	<div class="form-group">
-		{{ Form::label('frame_name', 'Name')}}
+		{{ Form::label('frame_name', 'Frame Name')}}
 		{{ Form::text('frame_name[]', null, ['class' => 'form-control']) }}
 	</div>
 	<div class="form-group">
@@ -61,12 +61,12 @@
 		{{ Form::text('frame_breakPlayerAway[]', null, ['class' => 'form-control']) }}
 	</div>
 
-	<div class="form-group">
-		{{ Form::button('Add another Frame', ['class' => 'addFrame form-control']) }}
-	</div>
-
 	<div class="addFields form-group">
 		
+	</div>
+
+	<div class="form-group">
+		{{ Form::button('Add another Frame', ['class' => 'addFrame form-control']) }}
 	</div>
 
 	<div class="form-group">
